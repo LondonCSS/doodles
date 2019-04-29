@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="css-doodle.js"></script>
+
+    <style>
+      :root {
+        --bw: 2px;
+        --bw05: calc(var(--bw) / 2);
+        --stripe-d: 35.33333%; 
+        --stripe-inner: calc(var(--stripe-d) - var(--bw05));
+        --stripe-outer: calc(var(--stripe-d) + var(--bw05));
+        --stripe-tint: #fff3;
+
+        --cell: (
+          background-image:
+            radial-gradient(
+              circle at top left,
+              transparent 0%,
+              transparent var(--stripe-inner),
+              var(--stripe-tint) var(--stripe-inner),
+              var(--stripe-tint) var(--stripe-outer),
+              transparent var(--stripe-outer)
+            ),
+            radial-gradient(
+              circle at bottom right,
+              transparent 0%,
+              transparent var(--stripe-inner),
+              var(--stripe-tint) var(--stripe-inner),
+              var(--stripe-tint) var(--stripe-outer),
+              transparent var(--stripe-outer)
+            );
+        );
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #0a0c27;
+        color: #ccc;
+      }
+
+      .title {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .subtitle {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+      }
+
+      .doodle {
+        display: grid;
+        place-content: center;
+
+        height: 100vh;
+      }
+
+      .logo {
+        position: relative;
+        margin: 0;
+        padding: 0.5rem 1rem;
+        border: var(--bw) solid var(--stripe-tint);
+        background: #0a0c27;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doodle">
+      <css-doodle>
+        :doodle { 
+          @grid: 33/100vmax;
+
+          position: absolute;
+        }
+
+        @use: var(--cell);
+        transform: rotate(@pick(90deg, 180deg, 270deg, 360deg));
+
+        :after {
+          content: ""
+        }
+      </css-doodle>
+      <h1 class="title logo">London CSS</h1>
+    </div>
+  </body>
+</html>
