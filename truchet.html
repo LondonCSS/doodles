@@ -12,7 +12,7 @@
       :root {
         --bw: 2px;
         --bw05: calc(var(--bw) / 2);
-        --stripe-d: 35.33333%; 
+        --stripe-d: 50%; 
         --stripe-inner: calc(var(--stripe-d) - var(--bw05));
         --stripe-outer: calc(var(--stripe-d) + var(--bw05));
         --stripe-tint: #fff3;
@@ -20,17 +20,17 @@
         --cell: (
           background-image:
             radial-gradient(
-              circle at top left,
+              farthest-side at top left,
               transparent 0% var(--stripe-inner),
               var(--stripe-tint) var(--stripe-inner) var(--stripe-outer),
               transparent var(--stripe-outer)
             ),
             radial-gradient(
-              circle at bottom right,
+              farthest-side at bottom right,
               transparent 0% var(--stripe-inner),
               var(--stripe-tint) var(--stripe-inner) var(--stripe-outer),
               transparent var(--stripe-outer)
-            );
+            )
         );
       }
     </style>
@@ -39,17 +39,13 @@
     <div class="doodle">
       <css-doodle>
         :doodle { 
-          @grid: 33/100vmax;
+          @grid: 24/100vmax;
 
           position: absolute;
         }
 
         @use: var(--cell);
         transform: rotate(@pick(90deg, 180deg, 270deg, 360deg));
-
-        :after {
-          content: ""
-        }
       </css-doodle>
       <h1 class="title logo">London CSS</h1>
     </div>
