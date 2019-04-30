@@ -8,7 +8,31 @@
     <script src="css-doodle.js"></script>
 
     <style>
-      
+      :root {
+        --stripe-w: 2px;
+        --stripe1-inner: 20%;
+        --stripe1-outer: calc(var(--stripe1-inner) + var(--stripe-w));
+
+        --stripe2-inner: 40%;
+        --stripe2-outer: calc(var(--stripe2-inner) + var(--stripe-w));
+
+        --stripe3-inner: 60%;
+        --stripe3-outer: calc(var(--stripe3-inner) + var(--stripe-w));
+
+        --stripe4-inner: 80%;
+        --stripe3-outer: calc(var(--stripe4-inner) + var(--stripe-w));
+
+        --wave: (
+          radial-gradient(
+            circle,
+            black 0%,
+            black var(--stripe1-inner),
+            var(--stripe-tint) var(--stripe1-inner),
+            var(--stripe-tint) var(--stripe1-outer),
+            transparent var(--stripe1-outer)
+          );
+        );
+      }
     </style>
   </head>
   <body>
