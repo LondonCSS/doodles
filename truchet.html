@@ -12,25 +12,20 @@
       :root {
         --bw: 2px;
         --bw05: calc(var(--bw) / 2);
-        --stripe-d: 50%; 
+        --stripe-d: 50%;
         --stripe-inner: calc(var(--stripe-d) - var(--bw05));
         --stripe-outer: calc(var(--stripe-d) + var(--bw05));
         --stripe-tint: #fff3;
 
         --cell: (
-          background-image:
+          background-image: @m(2, (
             radial-gradient(
-              farthest-side at top left,
-              transparent 0% var(--stripe-inner),
-              var(--stripe-tint) var(--stripe-inner) var(--stripe-outer),
-              transparent var(--stripe-outer)
-            ),
-            radial-gradient(
-              farthest-side at bottom right,
+              farthest-side at @pn(top left, bottom right),
               transparent 0% var(--stripe-inner),
               var(--stripe-tint) var(--stripe-inner) var(--stripe-outer),
               transparent var(--stripe-outer)
             )
+          ));
         );
       }
     </style>
@@ -38,7 +33,7 @@
   <body>
     <div class="doodle">
       <css-doodle>
-        :doodle { 
+        :doodle {
           @grid: 24/100vmax;
 
           position: absolute;

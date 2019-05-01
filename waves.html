@@ -13,56 +13,22 @@
         --stripe-bg: #0a0c27;
         --stripe-tint: #2b2d44;
         --stripe-w: 3px;
-
-        --stripe0-outer: var(--stripe-w);
-
-        --stripe1-outer: 20%;
-        --stripe1-inner: calc(var(--stripe1-outer) - var(--stripe-w));
-
-        --stripe2-outer: 40%;
-        --stripe2-inner: calc(var(--stripe2-outer) - var(--stripe-w));
-
-        --stripe3-outer: 60%;
-        --stripe3-inner: calc(var(--stripe3-outer) - var(--stripe-w));
-
-        --stripe4-outer: 80%;
-        --stripe4-inner: calc(var(--stripe4-outer) - var(--stripe-w));
-
-        --stripe5-outer: 80%;
-        --stripe5-inner: calc(var(--stripe5-outer) - var(--stripe-w));
-
-        --stripe6-outer: 100%;
-        --stripe6-inner: calc(var(--stripe6-outer) - var(--stripe-w));
-
         --waves: (
           content: "";
           display: block;
-          width: 100%;
-          height: 100%;
+          @size: 100%;
           background-image: radial-gradient(
             circle,
-            
-            var(--stripe-tint) 0 var(--stripe0-outer),
-            
-            var(--stripe-bg) var(--stripe0-outer) var(--stripe1-inner),
-            var(--stripe-tint) var(--stripe1-inner) var(--stripe1-outer),
-
-            var(--stripe-bg) var(--stripe1-outer) var(--stripe2-inner),
-            var(--stripe-tint) var(--stripe2-inner) var(--stripe2-outer),
-            
-            var(--stripe-bg) var(--stripe2-outer) var(--stripe3-inner),
-            var(--stripe-tint) var(--stripe3-inner) var(--stripe3-outer),
-
-            var(--stripe-bg) var(--stripe3-outer) var(--stripe4-inner),
-            var(--stripe-tint) var(--stripe4-inner) var(--stripe4-outer),
-
-            var(--stripe-bg) var(--stripe4-outer) var(--stripe5-inner),
-            var(--stripe-tint) var(--stripe5-inner) var(--stripe5-outer),
-
-            var(--stripe-bg) var(--stripe5-outer) var(--stripe6-inner),
-            var(--stripe-tint) var(--stripe6-inner) var(--stripe6-outer),
-
-            transparent var(--stripe6-outer)
+            var(--stripe-tint) 0 var(--stripe-w),
+            @m(5, (
+              var(--stripe-bg)
+                calc((@n() - 1) * 20%)
+                calc(@n() * 20% - var(--stripe-w)),
+              var(--stripe-tint)
+                calc(@n() * 20% - var(--stripe-w))
+                calc(@n() * 20%)
+            )),
+            transparent 100%
           );
         );
       }
@@ -75,21 +41,14 @@
   <body>
     <div class="doodle">
       <css-doodle>
-        :doodle { 
-          @grid: 10 / 100vmax; 
-
+        :doodle {
+          @grid: 10 / 100vmax;
           position: absolute;
         }
-        
-        :before {
+        :before, :after {
           position: absolute;
-          top: -50%;
-          @use: var(--waves);
-        }
-
-        :after {
-          position: absolute;
-          left: -50%;
+          top: @pn(-50%, auto);
+          left: @pn(auto, -50%);
           @use: var(--waves);
         }
       </css-doodle>
