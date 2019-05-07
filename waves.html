@@ -14,55 +14,22 @@
         --stripe-tint: #2b2d44;
         --stripe-w: 3px;
 
+        --stripe0-inner: 0;
         --stripe0-outer: var(--stripe-w);
 
         --stripe1-outer: 20%;
         --stripe1-inner: calc(var(--stripe1-outer) - var(--stripe-w));
-
-        --stripe2-outer: 40%;
-        --stripe2-inner: calc(var(--stripe2-outer) - var(--stripe-w));
-
-        --stripe3-outer: 60%;
-        --stripe3-inner: calc(var(--stripe3-outer) - var(--stripe-w));
-
-        --stripe4-outer: 80%;
-        --stripe4-inner: calc(var(--stripe4-outer) - var(--stripe-w));
-
-        --stripe5-outer: 80%;
-        --stripe5-inner: calc(var(--stripe5-outer) - var(--stripe-w));
-
-        --stripe6-outer: 100%;
-        --stripe6-inner: calc(var(--stripe6-outer) - var(--stripe-w));
 
         --waves: (
           content: "";
           display: block;
           width: 100%;
           height: 100%;
-          background-image: radial-gradient(
+          background-image: repeating-radial-gradient(
             circle,
             
-            var(--stripe-tint) 0 var(--stripe0-outer),
-            
-            var(--stripe-bg) var(--stripe0-outer) var(--stripe1-inner),
-            var(--stripe-tint) var(--stripe1-inner) var(--stripe1-outer),
-
-            var(--stripe-bg) var(--stripe1-outer) var(--stripe2-inner),
-            var(--stripe-tint) var(--stripe2-inner) var(--stripe2-outer),
-            
-            var(--stripe-bg) var(--stripe2-outer) var(--stripe3-inner),
-            var(--stripe-tint) var(--stripe3-inner) var(--stripe3-outer),
-
-            var(--stripe-bg) var(--stripe3-outer) var(--stripe4-inner),
-            var(--stripe-tint) var(--stripe4-inner) var(--stripe4-outer),
-
-            var(--stripe-bg) var(--stripe4-outer) var(--stripe5-inner),
-            var(--stripe-tint) var(--stripe5-inner) var(--stripe5-outer),
-
-            var(--stripe-bg) var(--stripe5-outer) var(--stripe6-inner),
-            var(--stripe-tint) var(--stripe6-inner) var(--stripe6-outer),
-
-            transparent var(--stripe6-outer)
+            var(--stripe-tint) var(--stripe0-inner) var(--stripe0-outer),            
+            var(--stripe-bg)   var(--stripe0-outer) var(--stripe1-inner)
           );
         );
       }
